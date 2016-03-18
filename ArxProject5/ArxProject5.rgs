@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'ArxProject5'
+		'sadArxProject5.arx'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

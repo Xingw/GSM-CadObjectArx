@@ -37,7 +37,7 @@
 			Name="Debug|x64"
 			>
 			<DebugSettings
-				Command="C:\WINDOWS\SYSTEM32\regsvr32.exe"
+				Command=""
 				WorkingDirectory=""
 				CommandArguments=""
 				Attach="false"
@@ -50,7 +50,7 @@
 				SQLDebugging=""
 				Environment=""
 				EnvironmentMerge="true"
-				DebuggerFlavor=""
+				DebuggerFlavor="1"
 				MPIRunCommand=""
 				MPIRunArguments=""
 				MPIRunWorkingDirectory=""

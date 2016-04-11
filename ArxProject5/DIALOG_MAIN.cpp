@@ -9,11 +9,14 @@
 
 
 // DIALOG_MAIN 对话框
-
+bool first = true;
 IMPLEMENT_DYNAMIC(DIALOG_MAIN, CDialog)
 
 DIALOG_MAIN::DIALOG_MAIN(CWnd* pParent /*=NULL*/)
 	: CDialog(DIALOG_MAIN::IDD, pParent)
+	, m_radiogroup1(0)
+	, m_radiogroup2(0)
+	, m_radiogroup3(0)
 {
 
 }
@@ -24,10 +27,11 @@ DIALOG_MAIN::~DIALOG_MAIN()
 
 void DIALOG_MAIN::DoDataExchange(CDataExchange* pDX)
 {
-    CDialog::DoDataExchange(pDX);
+	CDialog::DoDataExchange(pDX);
 
-    DDX_Control(pDX, IDC_LIST1, m_list);
-    //List1 风格设定
+	DDX_Control(pDX, IDC_LIST1, m_list);
+	if(first){
+	//List1 风格设定
 	LONG lStyle;
 	lStyle = GetWindowLong(m_list.m_hWnd, GWL_STYLE);//获取当前窗口style
 	lStyle &= ~LVS_TYPEMASK; //清除显示方式位
@@ -36,10 +40,15 @@ void DIALOG_MAIN::DoDataExchange(CDataExchange* pDX)
 	DWORD dwStyle = m_list.GetExtendedStyle();
 	dwStyle |= LVS_EX_FULLROWSELECT;//选中某行使整行高亮（只适用与report风格的listctrl）
 	dwStyle |= LVS_EX_GRIDLINES;//网格线（只适用与report风格的listctrl）
-    dwStyle |= LVS_EX_CHECKBOXES;
+	dwStyle |= LVS_EX_CHECKBOXES;
 	m_list.SetExtendedStyle(dwStyle); //设置扩展风格
 	m_list.InsertColumn(0, L"选择", LVCFMT_LEFT, 60);//插入列
 	m_list.InsertColumn(1, L" 图层", LVCFMT_LEFT, 120);
+	first = false;
+	}
+	DDX_Radio(pDX, IDC_RADIO1, m_radiogroup1);
+	DDX_Radio(pDX, IDC_RADIO3, m_radiogroup2);
+	DDX_Radio(pDX, IDC_RADIO6, m_radiogroup3);
 }
 
 
@@ -51,6 +60,15 @@ BEGIN_MESSAGE_MAP(DIALOG_MAIN, CDialog)
     ON_BN_CLICKED(IDC_BUTTON2, &DIALOG_MAIN::OnBnClickedButton2)
     ON_BN_CLICKED(IDC_BUTTON4, &DIALOG_MAIN::OnBnClickedButton4)
     ON_BN_CLICKED(IDC_BUTTON5, &DIALOG_MAIN::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_RADIO1, &DIALOG_MAIN::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO2, &DIALOG_MAIN::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO5, &DIALOG_MAIN::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO3, &DIALOG_MAIN::OnBnClickedRadio3)
+	ON_BN_CLICKED(IDC_RADIO4, &DIALOG_MAIN::OnBnClickedRadio3)
+	ON_BN_CLICKED(IDC_RADIO6, &DIALOG_MAIN::OnBnClickedRadio6)
+	ON_BN_CLICKED(IDC_RADIO7, &DIALOG_MAIN::OnBnClickedRadio6)
+	ON_BN_CLICKED(IDC_RADIO8, &DIALOG_MAIN::OnBnClickedRadio6)
+	ON_BN_CLICKED(IDC_RADIO9, &DIALOG_MAIN::OnBnClickedRadio6)
 END_MESSAGE_MAP()
 
 
@@ -374,4 +392,67 @@ void DIALOG_MAIN::OnBnClickedButton5()
     {
         m_list.SetCheck(i,false);
     }
+}
+
+void DIALOG_MAIN::OnBnClickedRadio1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(true);
+	switch(m_radiogroup1)
+	{
+		case 0:
+		{
+			break;
+		}
+		case 1:
+		{
+			break;
+		}
+		case 2:
+		{
+			break;
+		}
+	}
+}
+
+void DIALOG_MAIN::OnBnClickedRadio3()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(true);
+	switch(m_radiogroup2)
+	{
+		case 0:
+		{
+			break;
+		}
+		case 1:
+		{
+			break;
+		}
+	}
+}
+
+void DIALOG_MAIN::OnBnClickedRadio6()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(true);
+	switch(m_radiogroup3)
+	{
+		case 0:
+		{
+			break;
+		}
+		case 1:
+		{
+			break;
+		}
+		case 2:
+		{
+			break;
+		}
+		case 3:
+		{
+			break;
+		}
+	}
 }

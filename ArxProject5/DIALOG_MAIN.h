@@ -47,4 +47,10 @@ public:
     afx_msg void OnBnClickedButton2();
     afx_msg void OnBnClickedButton4();
     afx_msg void OnBnClickedButton5();
+	int m_radiogroup1;
+	afx_msg void OnBnClickedRadio1();
+	afx_msg void OnBnClickedRadio3();
+	int m_radiogroup2;
+	int m_radiogroup3;
+	afx_msg void OnBnClickedRadio6();
 };
